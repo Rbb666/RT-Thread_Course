@@ -18,7 +18,7 @@
 * 10.[玩转RT-Thread系列教程(10)--文件系统使用](https://blog.csdn.net/qq_43610430/article/details/117573559)
 * 11.[玩转RT-Thread系列教程(11)–综合485通信+文件系统综合实战](http://rbb996.gitee.io/blog/posts/867383168/)
 * 12.[玩转RT-Thread系列教程(12)--WIFI模组的使用](https://blog.csdn.net/qq_43610430/article/details/117593678?spm=1001.2014.3001.5501)
-* 13.[玩转RT-Thread系列教程(12)--MQTT协议通信](https://blog.csdn.net/qq_43610430/article/details/117791785)
+* 13.[玩转RT-Thread系列教程(13)--MQTT协议通信](https://blog.csdn.net/qq_43610430/article/details/117791785)
 
 > ...未完结，后续有更多手把手物联网+视频教程，待更新敬请期待！！！...
 
