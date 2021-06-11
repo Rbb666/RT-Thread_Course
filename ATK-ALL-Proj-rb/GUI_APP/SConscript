@@ -1,0 +1,9 @@
+from building import *
+
+cwd     = GetCurrentDir()
+src     = Glob('*.c')
+CPPPATH = [cwd]
+
+group = DefineGroup('GUI_APP', src, depend = ['ART_PI_USING_GUI_APP'], CPPPATH = CPPPATH)
+
+Return('group')

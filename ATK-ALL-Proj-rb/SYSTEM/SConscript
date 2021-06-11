@@ -1,0 +1,10 @@
+Import('rtconfig')
+from building import *
+
+cwd = GetCurrentDir()
+CPPPATH = [cwd + '/sys']
+src = Glob('sys/*.c')
+
+group = DefineGroup('SYSTEM', src, depend = ['ART_PI_USING_SYSTEM'], CPPPATH = CPPPATH)
+
+Return('group')

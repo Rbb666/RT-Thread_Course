@@ -1,0 +1,113 @@
+
+[18:49:06.415]收←◆[D/drv.ext_sram] External sram init success, mapped at 0x68000000, size is 1048576 bytes, data width is 16
+[I/I2C] I2C bus [i2c1] registered
+
+ \ | /
+- RT -     Thread Operating System
+ / | \     4.0.3 build May 23 2021
+ 2006 - 2021 Copyright by rt-thread team
+
+[18:49:06.493]收←◆[I/drv.lcd]  LCD ID:5510
+
+[18:49:06.614]收←◆sram init success!
+
+[18:49:06.736]收←◆[I/touch] rt_touch init success
+[I/gt9147] touch device gt9147 init success
+
+id = 9 1 4 7 
+
+[18:49:06.801]收←◆range_x = 800 
+range_y = 480 
+point_num = 5 
+sram malloc success
+
+[18:49:07.467]收←◆msh />
+[18:49:13.133]发→◇list_thread
+□
+[18:49:13.137]收←◆list_thread
+thread   pri  status      sp     stack size max used left tick  error
+-------- ---  ------- ---------- ----------  ------  ---------- ---
+lvgl      18  suspend 0x00000078 0x00000800    75%   0x00000006 000
+touch_lc  25  suspend 0x0000007c 0x00000400    44%   0x00000005 000
+tshell    20  running 0x000001fc 0x00001000    13%   0x00000008 000
+mmcsd_de  22  suspend 0x0000009c 0x00000400    15%   0x00000014 000
+tidle0    31  ready   0x00000040 0x00000100    31%   0x00000018 000
+main      10  suspend 0x00000080 0x00000800    23%   0x00000004 000
+msh />
+msh />
+[18:49:16.036]发→◇free
+□
+[18:49:16.039]收←◆free
+memheap   pool size  max used size available size
+-------- ---------- ------------- --------------
+sram     1048576    384072        664504
+ext_sram 1048576    48            1048528
+heap     32104      11080         21024
+msh />
+msh />
+[18:50:33.835]发→◇free
+□
+[18:50:33.838]收←◆free
+memheap   pool size  max used size available size
+-------- ---------- ------------- --------------
+sram     1048576    384072        664504
+ext_sram 1048576    48            1048528
+heap     32104      11080         21024
+msh />
+msh />
+[19:01:14.463]收←◆[D/drv.ext_sram] External sram init success, mapped at 0x68000000, size is 1048576 bytes, data width is 16
+[I/I2C] I2C bus [i2c1] registered
+
+ \ | /
+- RT -     Thread Operating System
+ / | \     4.0.3 build May 23 2021
+ 2006 - 2021 Copyright by rt-thread team
+
+[19:01:14.539]收←◆[I/drv.lcd]  LCD ID:5510
+
+[19:01:14.659]收←◆sram init success!
+
+[19:01:14.782]收←◆[I/touch] rt_touch init success
+[I/gt9147] touch device gt9147 init success
+
+id = 9 1 4 7 
+
+[19:01:14.847]收←◆range_x = 800 
+range_y = 480 
+point_num = 5 
+sram malloc success
+
+[19:01:15.580]收←◆msh />
+[19:02:33.968]发→◇free
+□
+[19:02:33.971]收←◆free
+memheap   pool size  max used size available size
+-------- ---------- ------------- --------------
+sram     1048576    384072        664504
+ext_sram 1048576    48            1048528
+heap     29128      11080         18048
+msh />
+msh />
+[19:02:37.484]收←◆[D/drv.ext_sram] External sram init success, mapped at 0x68000000, size is 1048576 bytes, data width is 16
+[I/I2C] I2C bus [i2c1] registered
+
+ \ | /
+- RT -     Thread Operating System
+ / | \     4.0.3 build May 23 2021
+ 2006 - 2021 Copyright by rt-thread team
+
+[19:02:37.561]收←◆[I/drv.lcd]  LCD ID:5510
+
+[19:02:37.682]收←◆sram init success!
+
+[19:02:37.804]收←◆[I/touch] rt_touch init success
+[I/gt9147] touch device gt9147 init success
+
+id = 9 1 4 7 
+
+[19:02:37.870]收←◆range_x = 800 
+range_y = 480 
+point_num = 5 
+sram malloc success
+
+[19:02:38.602]收←◆msh />

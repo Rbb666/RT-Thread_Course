@@ -1,0 +1,25 @@
+import os
+import rtconfig
+from building import *
+
+cwd     = GetCurrentDir()
+
+path  = [cwd]
+path  += [cwd + '/lvgl']
+path  += [cwd + '/lvgl_driver']
+path  += [cwd + '/lv_examples']
+
+# add LittleVgl generated
+genSrc = Glob('./lvgl/src/lv_core/*.c')
+genSrc += Glob('./lvgl/src/lv_draw/*.c')
+genSrc += Glob('./lvgl/src/lv_font/*.c')
+genSrc += Glob('./lvgl/src/lv_hal/*.c')
+genSrc += Glob('./lvgl/src/lv_misc/*.c')
+genSrc += Glob('./lvgl/src/lv_objx/*.c')
+genSrc += Glob('./lvgl/src/lv_themes/*.c')
+genSrc += Glob('./lvgl_driver/*.c')
+
+group = DefineGroup('GUI', genSrc, depend = ['ART_PI_LittleVgl'], CPPPATH = path)
+
+
+Return('group')
