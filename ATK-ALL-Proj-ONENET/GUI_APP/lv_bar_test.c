@@ -35,20 +35,21 @@ static int lvgl_tick_handler_init(void)
 
 static void lvgl_th_run(void *p)
 {
-		tp_dev.init();						//触摸屏初始化
-		//
-    lv_init();								//lvgl系统初始化
-    lv_port_disp_init();			//lvgl显示接口初始化
-    lv_port_indev_init();			//lvgl输入接口初始化	
-		_lv_init = 1;							//开启心跳
+    tp_dev.init();				//触摸屏初始化
+    //
+    lv_init();					//lvgl系统初始化
+    lv_port_disp_init();		//lvgl显示接口初始化
+    lv_port_indev_init();		//lvgl输入接口初始化
+    _lv_init = 1;				//开启心跳
     lvgl_tick_handler_init();	//心跳定时器
-		//
-		lv_test_theme_1(lv_theme_night_init(210,NULL));
-		while(1)
+    //
+    lv_test_theme_1(lv_theme_night_init(210, NULL));
+
+    while(1)
     {
-				tp_dev.scan(0);
+        tp_dev.scan(0);
         lv_task_handler();
-				KEY_APP_Task();			
+        KEY_APP_Task();
         rt_thread_mdelay(5);
     }
 }

@@ -61,7 +61,8 @@ static void Thread_INT_th(void *p)
 
 int Thread_init(void)
 {
-    rt_thread_t thread = rt_thread_create("INIT", Thread_INT_th, RT_NULL, 512, RT_THREAD_PRIORITY_MAX / 2, 20);
+    rt_thread_t thread = rt_thread_create("INIT", Thread_INT_th, RT_NULL,
+                                          512, RT_THREAD_PRIORITY_MAX / 2, 20);
 
     if(thread == RT_NULL)
     {

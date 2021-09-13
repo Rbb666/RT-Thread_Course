@@ -11,7 +11,7 @@
 
 #define HIGHT_TEMPVALUE 	(35.0f)
 #define LOW_TEMPVALUE 		(15.0f)
-#define HIGHT_HUMIVALUE 	(65.0f)
+#define HIGHT_HUMIVALUE 	(85.0f)
 #define LOW_HUMIVALUE			(25.0f)
 #define MAX_COUNTER 			(8)
 

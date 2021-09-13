@@ -13,6 +13,7 @@
 #include <stdio.h>
 
 #include "uart_app.h"
+#include <onenet.h>
 
 #if LV_USE_TESTS
 /*********************
@@ -105,23 +106,40 @@ void task_cb(lv_task_t * task)
     alarm_leval(buff1, buff2);
 }
 
+static rt_bool_t led1_flag = true, led2_flag = true;
 //button»Øµ÷
 static void event_handler(lv_obj_t* obj, lv_event_t event)
 {
-    static uint8_t count1, count2;
-
     if (event == LV_EVENT_CLICKED)
     {
         if(obj == btn1)
-        {
-						count1++;
-            rt_pin_write(LED0_PIN, count1 % 2);
+        {	
+			led1_flag = !led1_flag;
+            rt_pin_write(LED0_PIN, led1_flag);
+			
+            if (onenet_mqtt_upload_digit("LED1_status", !led1_flag))
+            {
+                rt_kprintf("upload has an error, stop uploading");
+            }
+            else
+            {
+                rt_kprintf("buffer : {\"LED1_status\":%d}", !led1_flag);
+            }			
         }
 
         if(obj == btn2)
         {
-						count2++;
-            rt_pin_write(LED1_PIN, count2 % 2);
+			led2_flag = !led2_flag;
+            rt_pin_write(LED1_PIN, led2_flag);
+			
+            if (onenet_mqtt_upload_digit("LED2_status", !led2_flag))
+            {
+                rt_kprintf("upload has an error, stop uploading");
+            }
+            else
+            {
+                rt_kprintf("buffer : {\"LED2_status\":%d}", !led2_flag);
+            }				
         }
     }
 }

@@ -118,6 +118,8 @@
 #define RT_MMCSD_STACK_SIZE 1024
 #define RT_MMCSD_THREAD_PREORITY 22
 #define RT_MMCSD_MAX_PARTITION 16
+#define RT_USING_SENSOR
+#define RT_USING_SENSOR_CMD
 
 /* Using USB */
 
@@ -218,6 +220,15 @@
 
 /* IoT Cloud */
 
+#define PKG_USING_ONENET
+#define PKG_USING_ONENET_SAMPLE
+#define ONENET_USING_MQTT
+#define ONENET_INFO_DEVID "718305986"
+#define ONENET_INFO_AUTH "Gate"
+#define ONENET_INFO_APIKEY "99=HmhFBlg9=e3Snu8x25qRVfgU="
+#define ONENET_INFO_PROID "426836"
+#define ONENET_MASTER_APIKEY "UvlcNUlBjs=URNWNS9t=atUbybc="
+#define PKG_USING_ONENET_LATEST_VERSION
 
 /* security packages */
 
@@ -236,6 +247,10 @@
 
 /* peripheral libraries and drivers */
 
+#define PKG_USING_SENSORS_DRIVERS
+#define PKG_USING_DHT11
+#define PKG_USING_DHT11_SAMPLE
+#define PKG_USING_DHT11_LATEST_VERSION
 #define PKG_USING_BUTTON
 #define SINGLE_AND_DOUBLE_TRIGGER
 #define LONG_FREE_TRIGGER
@@ -277,6 +292,8 @@
 #define BSP_I2C1_SDA_PIN 89
 #define BSP_USING_ADC
 #define BSP_USING_ADC3
+#define BSP_USING_ONCHIP_RTC
+#define BSP_RTC_USING_LSE
 #define BSP_USING_SDIO
 
 /* Board extended module Drivers */
