@@ -23,6 +23,7 @@
 #define LED0_PIN    GET_PIN(B, 5)
 /* defined the LED1 pin: PE5 */
 #define LED1_PIN    GET_PIN(E, 5)
+#define CRTL_PIN    GET_PIN(C, 5)
 /**********************
  *      TYPEDEFS
  **********************/
@@ -47,8 +48,9 @@ lv_obj_t * chart1;
 lv_obj_t * label1;
 lv_obj_t * label_btn1;
 lv_obj_t * label_btn2;
+lv_obj_t * label_btn3;
 
-lv_obj_t * btn1, * btn2;
+lv_obj_t * btn1, * btn2, * btn3;
 
 lv_chart_series_t * series1;
 lv_chart_series_t * series2;
@@ -60,8 +62,9 @@ lv_color_t needle_colors1[1];//每一根指针的颜色
  *      MACROS
  **********************/
 extern float light_value;
-extern int16_t temp;  //定义温度变量
-extern int16_t humi;  //定义湿度变量
+//extern int16_t temp;  //定义温度变量
+//extern int16_t humi;  //定义湿度变量
+extern struct rt_sensor_data sensor_data;
 /**********************
  *   GLOBAL FUNCTIONS
  **********************/
@@ -93,7 +96,10 @@ void task_cb(lv_task_t * task)
 {
     char buff1[40];
     char buff2[40];
-
+	
+	uint8_t temp = (sensor_data.data.temp & 0xffff) >> 0;      // get temp
+	uint8_t humi = (sensor_data.data.temp & 0xffff0000) >> 16; // get humi
+	
     //往series1数据线上添加新的数据点
     lv_chart_set_next(chart1, series1, temp);
 
@@ -106,7 +112,8 @@ void task_cb(lv_task_t * task)
     alarm_leval(buff1, buff2);
 }
 
-static rt_bool_t led1_flag = true, led2_flag = true;
+static rt_bool_t led1_flag = true, led2_flag = true, led3_flag = true;
+
 //button回调
 static void event_handler(lv_obj_t* obj, lv_event_t event)
 {
@@ -117,7 +124,7 @@ static void event_handler(lv_obj_t* obj, lv_event_t event)
 			led1_flag = !led1_flag;
             rt_pin_write(LED0_PIN, led1_flag);
 			
-            if (onenet_mqtt_upload_digit("LED1_status", !led1_flag))
+            if (onenet_mqtt_upload_digit("LED1_status", !led1_flag) != RT_EOK)
             {
                 rt_kprintf("upload has an error, stop uploading");
             }
@@ -132,7 +139,7 @@ static void event_handler(lv_obj_t* obj, lv_event_t event)
 			led2_flag = !led2_flag;
             rt_pin_write(LED1_PIN, led2_flag);
 			
-            if (onenet_mqtt_upload_digit("LED2_status", !led2_flag))
+            if (onenet_mqtt_upload_digit("LED2_status", !led2_flag) != RT_EOK)
             {
                 rt_kprintf("upload has an error, stop uploading");
             }
@@ -141,6 +148,21 @@ static void event_handler(lv_obj_t* obj, lv_event_t event)
                 rt_kprintf("buffer : {\"LED2_status\":%d}", !led2_flag);
             }				
         }
+		
+        if(obj == btn3)
+        {
+			led3_flag = !led3_flag;
+            rt_pin_write(CRTL_PIN, led3_flag);
+			
+            if (onenet_mqtt_upload_digit("CTRL_status", !led3_flag) != RT_EOK)
+            {
+                rt_kprintf("upload has an error, stop uploading");
+            }
+            else
+            {
+                rt_kprintf("buffer : {\"CTRL_status\":%d}", !led3_flag);
+            }				
+        }		
     }
 }
 
@@ -162,6 +184,14 @@ void lv_gauge_test_start(lv_obj_t * parent)
     label_btn2 = lv_label_create(btn2, NULL);/*btn1内创建label*/
     lv_label_set_text(label_btn2, "LED2");
 
+	
+    btn3 = lv_btn_create(parent, NULL);/*创建btn1*/
+    lv_obj_set_event_cb(btn3, event_handler);/*设置btn1回调函数*/
+    lv_obj_align(btn3, NULL, LV_ALIGN_IN_BOTTOM_LEFT, 220+140, -40);
+    lv_obj_set_size(btn3, 100, 50);
+
+    label_btn3 = lv_label_create(btn3, NULL);/*btn1内创建label*/
+    lv_label_set_text(label_btn3, "CTRL");	
 
     //1.创建自定义样式
     lv_style_copy(&gauge_style, &lv_style_pretty_color);
@@ -238,7 +268,7 @@ void lv_gauge_test_start(lv_obj_t * parent)
     lv_chart_refresh(chart1);//如果是采用直接修改的方式,请最好调用一下刷新操作
 
     //4.创建一个任务来显示变化
-    lv_task_create(task_cb, 300, LV_TASK_PRIO_MID, NULL);
+    lv_task_create(task_cb, 1000, LV_TASK_PRIO_MID, NULL);
 }
 
 

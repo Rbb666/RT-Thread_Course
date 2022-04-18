@@ -43,7 +43,7 @@ static void lvgl_th_run(void *p)
     _lv_init = 1;				//开启心跳
     lvgl_tick_handler_init();	//心跳定时器
     //
-    lv_test_theme_1(lv_theme_night_init(210, NULL));
+    lv_test_theme_1(lv_theme_mono_init(210, NULL));
 
     while(1)
     {
@@ -59,7 +59,7 @@ int rt_lvgl_init(void)
     rt_err_t ret = RT_EOK;
     rt_thread_t thread = RT_NULL;
 
-    thread = rt_thread_create("lvgl", lvgl_th_run, RT_NULL, 2048, 15, 20);
+    thread = rt_thread_create("lvgl", lvgl_th_run, RT_NULL, 4096, 12, 20);
 
     if(thread == RT_NULL)
     {

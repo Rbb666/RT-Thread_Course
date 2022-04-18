@@ -52,7 +52,7 @@
           <OutputName>rt-thread</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
-          <CreateHexFile>0</CreateHexFile>
+          <CreateHexFile>1</CreateHexFile>
           <DebugInformation>1</DebugInformation>
           <BrowseInformation>1</BrowseInformation>
           <ListingPath>.\build\keil\List\</ListingPath>
@@ -412,6 +412,11 @@
               <FileName>drv_lcd.c</FileName>
               <FileType>1</FileType>
               <FilePath>applications\drv_lcd.c</FilePath>
+            </File>
+            <File>
+              <FileName>MQTT_APP.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>applications\MQTT_APP.c</FilePath>
             </File>
           </Files>
         </Group>

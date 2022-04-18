@@ -102,8 +102,9 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef* hadc)
     __HAL_RCC_GPIOF_CLK_ENABLE();
     /**ADC3 GPIO Configuration
     PF8     ------> ADC3_IN6
+    PF9     ------> ADC3_IN7
     */
-    GPIO_InitStruct.Pin = GPIO_PIN_8;
+    GPIO_InitStruct.Pin = GPIO_PIN_8|GPIO_PIN_9;
     GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
     HAL_GPIO_Init(GPIOF, &GPIO_InitStruct);
 
@@ -149,8 +150,9 @@ void HAL_ADC_MspDeInit(ADC_HandleTypeDef* hadc)
 
     /**ADC3 GPIO Configuration
     PF8     ------> ADC3_IN6
+    PF9     ------> ADC3_IN7
     */
-    HAL_GPIO_DeInit(GPIOF, GPIO_PIN_8);
+    HAL_GPIO_DeInit(GPIOF, GPIO_PIN_8|GPIO_PIN_9);
 
     /* ADC3 DMA DeInit */
     HAL_DMA_DeInit(hadc->DMA_Handle);

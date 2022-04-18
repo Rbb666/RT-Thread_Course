@@ -20,9 +20,9 @@ static void disp_flush(lv_disp_drv_t * disp_drv, const lv_area_t * area, lv_colo
 void lv_port_disp_init(void)
 {
     static lv_disp_buf_t disp_buf;
-	
-		aMemory1 = rt_malloc(COLOR_BUF_SIZE);
-	
+
+    aMemory1 = rt_malloc(COLOR_BUF_SIZE);
+
     rt_kprintf("sram malloc success\n");
     //显示缓冲区初始化
     lv_disp_buf_init(&disp_buf, aMemory1, NULL, COLOR_BUF_SIZE);
@@ -54,6 +54,7 @@ void lv_port_disp_init(void)
 
     //注册显示驱动到lvgl中
     lv_disp_drv_register(&disp_drv);
+	rt_kprintf("lv_disp_drv_register success\n");
 }
 
 
